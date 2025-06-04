@@ -1,7 +1,10 @@
-@import 'tailwindcss';
-@import './shadcn.css';
+@import "tailwindcss";
+@import "./shadcn.css";
+@import "./custom-props.css";
+@import "./utilities/custom-token.css";
+@import "./utilities/typography-token.css";
 
 body {
-  @apply bg-green-50;
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-white;
+  font-family: var(--font-jet-brains-mono), Arial, Helvetica, sans-serif;
 }
