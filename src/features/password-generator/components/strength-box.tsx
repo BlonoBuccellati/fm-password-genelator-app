@@ -1,15 +1,16 @@
 import { Label } from "@/components/ui/label";
 
+import { usePasswordGeneratorContext } from "../context/password-generator-context";
+
+import StrengthBar from "./strength-bar";
+
 const StrengthIndicator = () => {
+  const { resultStrengthColor, resultStrengthName } =
+    usePasswordGeneratorContext();
   return (
     <div className="flex items-center space-x-200 text-white">
-      <span className="uppercase">medium</span>
-      <div className="flex gap-100">
-        <span className="block h-[28px] w-[10px] bg-yellow-300" />
-        <span className="block h-[28px] w-[10px] bg-yellow-300" />
-        <span className="block h-[28px] w-[10px] bg-yellow-300" />
-        <span className="block h-[28px] w-[10px] bg-yellow-300" />
-      </div>
+      <span className="uppercase">{resultStrengthName}</span>
+      <StrengthBar color={resultStrengthColor} />
     </div>
   );
 };
