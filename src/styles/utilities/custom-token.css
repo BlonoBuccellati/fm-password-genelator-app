@@ -45,8 +45,10 @@
   --spacing-600: 3rem;
   --spacing-1000: 5rem;
   --spacing-1200: 6rem;
+  --spacing-1300: 6.5rem;
   --spacing-1500: 7.5rem;
   --spacing-1600: 8rem;
+  --spacing-2200: 11rem;
 }
 
 @theme {
