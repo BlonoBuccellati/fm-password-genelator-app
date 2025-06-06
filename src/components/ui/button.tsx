@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 const buttonVariants = cva("", {
   variants: {
     variant: {
-      default:
+      generate:
         "bg-green-200 text-grey-800 typo-4 hover:bg-grey-800 hover:text-green-200 hover:cursor-pointer hover:outline-2 hover:outline-green-200 uppercase w-full",
       destructive:
         "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
@@ -27,7 +27,7 @@ const buttonVariants = cva("", {
     },
   },
   defaultVariants: {
-    variant: "default",
+    variant: "generate",
     size: "default",
   },
 });

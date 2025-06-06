@@ -3,14 +3,15 @@
 import CheckboxWithLabel from "@/components/checkbox-with-label";
 
 import { usePasswordGeneratorContext } from "../context/password-generator-context";
+import { PasswordCheckOptions } from "../types/password-generator";
 
 export const CheckboxList = () => {
   // これidが重要になるから型定義かなんかするかも。
-  const checkboxList = [
+  const checkboxList: { label: string; id: PasswordCheckOptions }[] = [
     { label: "Include Uppercase Letters", id: "upper" },
     { label: "Include Lowercase Letters", id: "lower" },
-    { label: "Include Numbers", id: "num" },
-    { label: "Include Symbols", id: "symbol" },
+    { label: "Include Numbers", id: "number" },
+    { label: "Include Symbols", id: "symbols" },
   ];
   const { handlerChecked } = usePasswordGeneratorContext();
 

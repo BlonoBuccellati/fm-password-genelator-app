@@ -1,18 +1,23 @@
 import {
+  PasswordCheckOptions,
   StrengthResultType,
   StrengthType,
 } from "../../types/password-generator";
 
 export function createPassword(
   passwordLength: number,
-  checkedMap: Record<string, boolean>,
+  checkedMap: Partial<Record<PasswordCheckOptions, boolean>>,
 ): StrengthResultType {
-  const checkedItems = Object.keys(checkedMap).filter((key) => checkedMap[key]);
+  const checkedKeys = Object.keys(checkedMap) as PasswordCheckOptions[];
+  const checkedItems = checkedKeys.filter((key) => checkedMap[key]);
+
   const resultStrengthColor = getStrengthType(
     passwordLength,
     checkedItems.length,
   );
-  const resultPassword = "test-password";
+  const resultPassword = generatePasswordArr(passwordLength, checkedItems).join(
+    "",
+  );
 
   const resultStrengthName =
     resultStrengthColor === "default" ? "" : resultStrengthColor;
@@ -44,6 +49,59 @@ const getStrengthType = (
   return "too weak!";
 };
 
-const generatePassword = (passwordLength: number, checkedItems: string[]) => {
-  return "";
+// 再帰関数
+const UPPERCASE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const LOWERCASE_CHARS = "abcdefghijklmnopqrstuvwxyz";
+const NUMBER_CHARS = "0123456789";
+const SYMBOL_CHARS = "!@#$%^&*()-_=+[]{}|;:,.<>/?"; // お好みで編集可
+
+const generatePasswordArr = (
+  passwordLength: number,
+  checkedItems: PasswordCheckOptions[],
+  currentPassword: string[] = [],
+) => {
+  const allAvailableChars = getAllAvailableChars(checkedItems);
+
+  if (passwordLength === 0 || checkedItems.length === 0) return currentPassword;
+
+  // 最初に、checkedItemsを全て含んでおく。
+  if (currentPassword.length === 0) {
+    if (checkedItems.includes("upper")) {
+      currentPassword.push(pickRandomChar(UPPERCASE_CHARS));
+    }
+    if (checkedItems.includes("lower")) {
+      currentPassword.push(pickRandomChar(LOWERCASE_CHARS));
+    }
+    if (checkedItems.includes("number")) {
+      currentPassword.push(pickRandomChar(NUMBER_CHARS));
+    }
+    if (checkedItems.includes("symbols")) {
+      currentPassword.push(pickRandomChar(SYMBOL_CHARS));
+    }
+  }
+  currentPassword.push(pickRandomChar(allAvailableChars));
+
+  return generatePasswordArr(passwordLength - 1, checkedItems, currentPassword);
+};
+
+const pickRandomChar = (charTypes: string): string => {
+  const idx = Math.floor(Math.random() * charTypes.length);
+  return charTypes[idx];
+};
+
+const getAllAvailableChars = (checkedItems: PasswordCheckOptions[]): string => {
+  let allAvailableChars = "";
+  if (checkedItems.includes("upper")) {
+    allAvailableChars += UPPERCASE_CHARS;
+  }
+  if (checkedItems.includes("lower")) {
+    allAvailableChars += LOWERCASE_CHARS;
+  }
+  if (checkedItems.includes("number")) {
+    allAvailableChars += NUMBER_CHARS;
+  }
+  if (checkedItems.includes("symbols")) {
+    allAvailableChars += SYMBOL_CHARS;
+  }
+  return allAvailableChars;
 };

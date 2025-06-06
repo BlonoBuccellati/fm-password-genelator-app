@@ -1,21 +1,24 @@
 import { CheckedState } from "@radix-ui/react-checkbox";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { createPassword } from "../lib/utils/create-password";
 import {
+  PasswordCheckOptions,
   PasswordGeneratorType,
   StrengthResultType,
 } from "../types/password-generator";
 
 export function usePasswordGenerator(): PasswordGeneratorType {
   // usePassword
-  const [length, setLength] = useState([0]);
+  const [passwordLength, setPasswordLength] = useState([0]);
   const handlerValueChange = (value: number[]) => {
-    setLength(value);
+    setPasswordLength(value);
   };
 
   // checked List
-  const [checkedMap, setCheckedMap] = useState<Record<string, boolean>>({});
+  const [checkedMap, setCheckedMap] = useState<
+    Partial<Record<PasswordCheckOptions, boolean>>
+  >({});
   const handlerChecked = (state: CheckedState, id: string) => {
     setCheckedMap((prev) => ({
       ...prev,
@@ -23,9 +26,14 @@ export function usePasswordGenerator(): PasswordGeneratorType {
     }));
   };
 
-  // 計算して、その計算結果
-  // チェックの数と、charlengthの組み合わせで、strengthと、passwordが決定する。
-  console.log(checkedMap); // checkedMapは計算時に使用
+  // generate buttonの有効、無効
+  const [isDisabled, setIsDisabled] = useState(false);
+  useEffect(() => {
+    const hasChecked = Object.values(checkedMap).some((val) => val);
+    if (hasChecked && passwordLength[0]) {
+      setIsDisabled(false);
+    } else setIsDisabled(true);
+  }, [checkedMap, passwordLength]);
 
   // 計算するときの、 状態管理
   const initialState: StrengthResultType = {
@@ -35,14 +43,15 @@ export function usePasswordGenerator(): PasswordGeneratorType {
   };
   const [result, setResult] = useState<StrengthResultType>(initialState);
   const handlerGenerateClick = () => {
-    const result = createPassword(length[0], checkedMap);
+    const result = createPassword(passwordLength[0], checkedMap);
     setResult(result);
   };
   return {
-    length: length[0],
+    length: passwordLength[0],
     handlerValueChange,
     handlerChecked,
     handlerGenerateClick,
     result,
+    isDisabled,
   };
 }

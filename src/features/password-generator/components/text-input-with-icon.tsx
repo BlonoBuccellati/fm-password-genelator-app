@@ -3,8 +3,10 @@
 import { ComponentType, SVGProps } from "react";
 
 import { Input } from "@/components/ui/input";
-import { useToast } from "@/features/password-generator/hooks/use-toast";
+import { useCopy } from "@/features/password-generator/hooks/use-toast";
 import { cn } from "@/lib/utils";
+
+import { usePasswordGeneratorContext } from "../context/password-generator-context";
 
 interface TextFieldToastProps {
   className?: string;
@@ -27,11 +29,14 @@ const TextInputWithIcon = ({
   className,
   ...props
 }: TextInputWithIconProps & React.ComponentProps<"input">) => {
-  const { showCopied, handlerIconClicked } = useToast();
+  const { result } = usePasswordGeneratorContext();
+  const { resultPassword } = result;
+  const { showCopied, handlerIconClicked } = useCopy(resultPassword);
 
   return (
     <div className="relative">
       <Input
+        value={resultPassword}
         type={props.type ?? "text"}
         className={cn("w-full", className)}
         {...props}

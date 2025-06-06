@@ -1,4 +1,4 @@
-import PasswordGenerator from "@/features/password-generator/components/password-generator";
+import { PasswordGenerator } from "@/features/password-generator/components";
 
 export default function Home() {
   return (

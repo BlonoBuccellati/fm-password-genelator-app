@@ -15,6 +15,7 @@ import StrengthBox from "./strength-box/strength-box";
 
 const PasswordGeneratorForm = () => {
   const value = usePasswordGenerator();
+
   return (
     <PasswordGeneratorContext value={value}>
       <form className="space-y-200">

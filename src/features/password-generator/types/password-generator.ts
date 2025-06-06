@@ -21,4 +21,5 @@ export type PasswordGeneratorType = {
   handlerChecked: (state: CheckedState, id: string) => void;
   handlerGenerateClick: () => void;
   result: StrengthResultType;
+  isDisabled: boolean;
 };
