@@ -1,9 +1,11 @@
 "use client";
 
+import { AnimatePresence } from "motion/react";
 import { ComponentType, SVGProps } from "react";
 
+import FadeInUp from "@/components/animation/fade-in-up";
 import { Input } from "@/components/ui/input";
-import { useCopy } from "@/features/password-generator/hooks/use-toast";
+import { useCopy } from "@/features/password-generator/hooks/use-copy";
 import { cn } from "@/lib/utils";
 
 import { usePasswordGeneratorContext } from "../context/password-generator-context";
@@ -13,7 +15,16 @@ interface TextFieldToastProps {
   text: string;
 }
 const TextFieldToast = ({ text, className }: TextFieldToastProps) => {
-  return <p className={cn("typo-4 text-green-200", className)}>{text}</p>;
+  return (
+    <p
+      className={cn(
+        "typo-4 bg-transparent/100 text-green-200 text-shadow-[0px_2px_2px_black]",
+        className,
+      )}
+    >
+      <span className="">{text}</span>
+    </p>
+  );
 };
 
 interface TextInputWithIconProps {
@@ -38,13 +49,23 @@ const TextInputWithIcon = ({
       <Input
         value={resultPassword}
         type={props.type ?? "text"}
-        className={cn("w-full", className)}
+        className={cn("w-full pr-600", className)}
         {...props}
       />
       {/* ここはコンポーネント化可能 absoluteは外に出す。 */}
       <div className="absolute top-1/2 right-200 flex -translate-y-1/2 items-center space-x-200">
-        {/* アニメーションつけたい */}
-        {showCopied && <TextFieldToast text={toastText} />}
+        <AnimatePresence>
+          {showCopied && (
+            <FadeInUp
+              exit={{
+                opacity: 0,
+                transition: { duration: 1, ease: "easeInOut" },
+              }}
+            >
+              <TextFieldToast text={toastText} />
+            </FadeInUp>
+          )}
+        </AnimatePresence>
         {/* アクティブ状態の時に、白くする。 */}
         <Icon
           className="text-green-200 hover:cursor-pointer hover:text-white"

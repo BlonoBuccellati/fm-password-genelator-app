@@ -6,7 +6,6 @@ import { usePasswordGeneratorContext } from "../context/password-generator-conte
 import { PasswordCheckOptions } from "../types/password-generator";
 
 export const CheckboxList = () => {
-  // これidが重要になるから型定義かなんかするかも。
   const checkboxList: { label: string; id: PasswordCheckOptions }[] = [
     { label: "Include Uppercase Letters", id: "upper" },
     { label: "Include Lowercase Letters", id: "lower" },
@@ -19,6 +18,7 @@ export const CheckboxList = () => {
     <div className="space-y-200">
       {checkboxList.map((checkbox) => (
         <CheckboxWithLabel
+          hasAnimation
           key={checkbox.id}
           id={checkbox.id}
           onCheckedChange={(state) => handlerChecked(state, checkbox.id)}

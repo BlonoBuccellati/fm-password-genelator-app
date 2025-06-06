@@ -6,10 +6,15 @@ import * as React from "react";
 import { IconCheck } from "@/assets";
 import { cn } from "@/lib/utils";
 
+import FadeInUp from "../animation/fade-in-up";
+
 function Checkbox({
+  hasAnimation,
   className,
   ...props
-}: React.ComponentProps<typeof CheckboxPrimitive.Root>) {
+}: React.ComponentProps<typeof CheckboxPrimitive.Root> & {
+  hasAnimation: boolean;
+}) {
   return (
     <CheckboxPrimitive.Root
       data-slot="checkbox"
@@ -24,7 +29,13 @@ function Checkbox({
         data-slot="checkbox-indicator"
         className="flex items-center justify-center text-current"
       >
-        <IconCheck />
+        {hasAnimation ? (
+          <FadeInUp transition={{ duration: 0.1, ease: "easeOut" }}>
+            <IconCheck />
+          </FadeInUp>
+        ) : (
+          <IconCheck />
+        )}
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   );

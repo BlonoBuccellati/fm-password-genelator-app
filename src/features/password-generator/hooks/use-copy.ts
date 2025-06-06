@@ -7,9 +7,10 @@ export function useCopy(resultPassword: string) {
     try {
       await navigator.clipboard.writeText(resultPassword);
       setShowCopied(true);
-      setTimeout(() => setShowCopied(false), 2000);
+      setTimeout(() => setShowCopied(false), 1000);
     } catch (err) {
       console.log("コピーに失敗しました。", err);
+      alert("コピーに失敗しました。");
     }
   };
 

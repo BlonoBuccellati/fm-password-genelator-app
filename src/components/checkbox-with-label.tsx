@@ -6,16 +6,22 @@ import { Label } from "@/components/ui/label";
 
 interface CheckboxWithLabelProps {
   id: string;
+  hasAnimation: boolean;
   onCheckedChange: (checked: CheckedState) => void;
 }
 const CheckboxWithLabel = ({
   id,
+  hasAnimation,
   onCheckedChange,
   children,
 }: PropsWithChildren<CheckboxWithLabelProps>) => {
   return (
     <div className="flex space-x-300">
-      <Checkbox id={id} onCheckedChange={onCheckedChange} />
+      <Checkbox
+        id={id}
+        onCheckedChange={onCheckedChange}
+        hasAnimation={hasAnimation}
+      />
       <Label htmlFor={id} className="typo-4 text-white hover:cursor-pointer">
         {children}
       </Label>
