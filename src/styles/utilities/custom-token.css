@@ -52,6 +52,7 @@
 
   --spacing-clamp-200-to-300: clamp(1rem, 0.523rem + 2.04vw, 1.5rem);
   --spacing-clamp-200-to-400: clamp(1rem, 0.046rem + 4.07vw, 2rem);
+  --spacing-clamp-600-to-800: clamp(3rem, 2.046rem + 4.07vw, 4rem);
 }
 
 @theme {

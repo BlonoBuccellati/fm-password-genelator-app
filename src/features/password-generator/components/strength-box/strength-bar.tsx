@@ -32,7 +32,7 @@ const StrengthBar = ({
         <div
           key={i}
           className={cn(
-            "outline-grey-200 block h-[28px] w-[10px]",
+            "outline-grey-200 my-[3px] block h-[28px] w-[10px]",
             strengthVarVariants({ color: "default" }),
           )}
         >

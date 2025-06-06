@@ -49,7 +49,10 @@ const TextInputWithIcon = ({
       <Input
         value={resultPassword}
         type={props.type ?? "text"}
-        className={cn("px-clamp-200-to-400 w-full pr-600", className)}
+        className={cn(
+          "px-clamp-200-to-400 pr-clamp-600-to-800 w-full",
+          className,
+        )}
         {...props}
       />
       {/* ここはコンポーネント化可能 absoluteは外に出す。 */}

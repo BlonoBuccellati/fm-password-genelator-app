@@ -12,6 +12,7 @@ export const PasswordGeneratorButton = () => {
       type="button"
       disabled={isDisabled}
       className={cn(
+        "py-clamp-200-to-300",
         isDisabled &&
           "bg-grey-700 hover:bg-grey-700 hover:text-grey-800 hover:cursor-not-allowed hover:outline-none",
       )}

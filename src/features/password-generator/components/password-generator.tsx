@@ -27,7 +27,7 @@ const PasswordGeneratorForm = () => {
           disabled
           placeholder="P4$5W0rD!"
         />
-        <div className="bg-grey-800 space-y-200 p-200">
+        <div className="bg-grey-800 px-clamp-200-to-400 py-clamp-200-to-300 space-y-clamp-200-to-400">
           <div className="space-y-400">
             <CharacterSlider className="mx-auto w-full" />
             <CheckboxList />
