@@ -43,7 +43,7 @@ const getStrengthType = (
   if (passwordLength >= 8 && numberOfCheckedItems >= 3) {
     return "medium";
   }
-  if (passwordLength >= 6 || numberOfCheckedItems <= 2) {
+  if (passwordLength >= 6 && numberOfCheckedItems >= 2) {
     return "weak";
   }
   return "too weak!";

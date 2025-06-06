@@ -1,21 +1,20 @@
 import { motion, MotionProps } from "motion/react";
 
+import { cn } from "@/lib/utils";
+
 const FillBox = ({
-  children,
   className,
   ...props
 }: MotionProps & { className: string }) => {
   return (
     <motion.div
-      className={className}
-      initial={{ height: "0%" }}
-      animate={{ height: "100%" }}
+      className={cn("h-full w-full", className)}
+      style={{ originY: 1 }}
+      initial={{ scaleY: 0 }}
+      animate={{ scaleY: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      style={{ originY: 0 }}
       {...props}
-    >
-      {children}
-    </motion.div>
+    />
   );
 };
 
