@@ -1,7 +1,11 @@
 import { CheckedState } from "@radix-ui/react-checkbox";
 import { useState } from "react";
 
-import { PasswordGeneratorType } from "../types/password-generator";
+import { createPassword } from "../lib/utils/create-password";
+import {
+  PasswordGeneratorType,
+  StrengthResultType,
+} from "../types/password-generator";
 
 export function usePasswordGenerator(): PasswordGeneratorType {
   // usePassword
@@ -20,20 +24,25 @@ export function usePasswordGenerator(): PasswordGeneratorType {
   };
 
   // 計算して、その計算結果
+  // チェックの数と、charlengthの組み合わせで、strengthと、passwordが決定する。
   console.log(checkedMap); // checkedMapは計算時に使用
 
-  const resultPassword = "test-password";
-  const resultStrengthColor = "default";
-
-  const resultStrengthName =
-    resultStrengthColor === "default" ? "" : resultStrengthColor;
-
+  // 計算するときの、 状態管理
+  const initialState: StrengthResultType = {
+    resultPassword: "",
+    resultStrengthColor: "default",
+    resultStrengthName: "",
+  };
+  const [result, setResult] = useState<StrengthResultType>(initialState);
+  const handlerGenerateClick = () => {
+    const result = createPassword(length[0], checkedMap);
+    setResult(result);
+  };
   return {
     length: length[0],
     handlerValueChange,
     handlerChecked,
-    resultPassword,
-    resultStrengthColor,
-    resultStrengthName,
+    handlerGenerateClick,
+    result,
   };
 }

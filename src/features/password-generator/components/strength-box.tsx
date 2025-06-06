@@ -5,8 +5,8 @@ import { usePasswordGeneratorContext } from "../context/password-generator-conte
 import StrengthBar from "./strength-bar";
 
 const StrengthIndicator = () => {
-  const { resultStrengthColor, resultStrengthName } =
-    usePasswordGeneratorContext();
+  const { result } = usePasswordGeneratorContext();
+  const { resultStrengthColor, resultStrengthName } = result;
   return (
     <div className="flex items-center space-x-200 text-white">
       <span className="uppercase">{resultStrengthName}</span>

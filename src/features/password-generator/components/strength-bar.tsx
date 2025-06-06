@@ -12,7 +12,7 @@ export const strengthVarVariants = cva("", {
       weak: "bg-orange-400",
       medium: "bg-yellow-300",
       strong: "bg-green-200",
-    } satisfies Record<StrengthType["resultStrength"], string>,
+    } satisfies Record<StrengthType, string>,
   },
   defaultVariants: {
     color: "medium",
@@ -20,9 +20,7 @@ export const strengthVarVariants = cva("", {
 });
 const StrengthBar = ({
   color,
-}: { color: StrengthType["resultStrength"] } & VariantProps<
-  typeof strengthVarVariants
->) => {
+}: { color: StrengthType } & VariantProps<typeof strengthVarVariants>) => {
   return (
     <div className="flex gap-100">
       {[...Array(4)].map((_, i) => (

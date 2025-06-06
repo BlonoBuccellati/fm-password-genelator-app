@@ -5,7 +5,7 @@ import { PropsWithChildren } from "react";
 import { IconArrowRight, IconCopy } from "@/assets";
 import ButtonWithIcon from "@/components/button-with-icon";
 import CheckboxWithLabel from "@/components/checkbox-with-label";
-import TextInputWithIcon from "@/features/password-generator/components/text-field-with-icon";
+import TextInputWithIcon from "@/features/password-generator/components/text-input-with-icon";
 import { cn } from "@/lib/utils";
 
 import {
@@ -17,6 +17,19 @@ import { usePasswordGenerator } from "../hooks/use-password-generator";
 import { CharacterSlider } from "./character-slider";
 import StrengthBox from "./strength-box";
 
+const PasswordGenerateButton = () => {
+  const { handlerGenerateClick } = usePasswordGeneratorContext();
+  return (
+    <ButtonWithIcon
+      icon={IconArrowRight}
+      type="button"
+      className={cn()}
+      onClick={handlerGenerateClick}
+    >
+      generate
+    </ButtonWithIcon>
+  );
+};
 const CheckboxList = () => {
   // これidが重要になるから型定義かなんかするかも。
   const checkboxList = [
@@ -65,10 +78,7 @@ const PasswordGeneratorForm = () => {
             <StrengthBox />
           </div>
           {/* form送信 */}
-          {/* buttonは状態によって切り替える。 */}
-          <ButtonWithIcon icon={IconArrowRight} type="button" className={cn()}>
-            generate
-          </ButtonWithIcon>
+          <PasswordGenerateButton />
         </div>
       </form>
     </PasswordGeneratorContext>
