@@ -69,13 +69,13 @@ const TextInputWithIcon = ({
             </FadeInUp>
           )}
         </AnimatePresence>
-        {/* アクティブ状態の時に、白くする。 */}
-        <Icon
-          className="text-green-200 hover:cursor-pointer hover:text-white"
-          aria-label={iconAriaLabel}
-          role="button"
+        <button
+          type="button"
           onClick={handlerIconClicked}
-        />
+          aria-label={iconAriaLabel}
+        >
+          <Icon className="text-green-200 hover:cursor-pointer hover:text-white" />
+        </button>
       </div>
     </div>
   );

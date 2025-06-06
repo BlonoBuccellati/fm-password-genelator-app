@@ -32,7 +32,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Frontend Mentor Solution](https://www.frontendmentor.io/challenges/tip-calculator-app-ugJNGbJUX)
+- Solution URL: [Frontend Mentor Solution](https://www.frontendmentor.io/challenges/password-generator-app-Mr8CLycqjh)
 - Live Site URL: [Deployed on Vercel](https://fm-password-genelator-app.vercel.app/)
 
 ## My process

@@ -14,10 +14,13 @@ const CheckboxWithLabel = ({
   hasAnimation,
   onCheckedChange,
   children,
-}: PropsWithChildren<CheckboxWithLabelProps>) => {
+  ...props
+}: PropsWithChildren<CheckboxWithLabelProps> &
+  React.ComponentProps<typeof Checkbox>) => {
   return (
     <div className="flex space-x-300">
       <Checkbox
+        {...props}
         id={id}
         onCheckedChange={onCheckedChange}
         hasAnimation={hasAnimation}

@@ -18,6 +18,7 @@ export const CheckboxList = () => {
     <div className="space-y-200">
       {checkboxList.map((checkbox) => (
         <CheckboxWithLabel
+          aria-label="include character type"
           hasAnimation
           key={checkbox.id}
           id={checkbox.id}

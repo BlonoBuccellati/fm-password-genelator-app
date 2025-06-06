@@ -14,6 +14,7 @@ export function CharacterSlider({ className, ...props }: SliderProps) {
         <span className="typo-1 block text-green-200">{length}</span>
       </div>
       <Slider
+        aria-label="character length"
         onValueChange={handlerValueChange}
         value={[length]}
         orientation="horizontal"
