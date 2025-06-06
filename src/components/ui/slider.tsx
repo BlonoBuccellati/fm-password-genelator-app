@@ -35,7 +35,7 @@ function Slider({
       min={min}
       max={max}
       className={cn(
-        "relative flex w-full touch-none items-center select-none data-[disabled]:opacity-50 data-[orientation=horizontal]:h-[28px]",
+        "data-[orientation=horizontal]:h-[28 relative flex w-full touch-none items-center select-none data-[disabled]:opacity-50",
         className,
       )}
       {...props}
@@ -60,7 +60,7 @@ function Slider({
         <SliderPrimitive.Thumb
           data-slot="slider-thumb"
           key={index}
-          className="bg-grey-200 hover:bg-grey-850 block size-[28px] shrink-0 rounded-full shadow-sm hover:cursor-pointer hover:ring-2 hover:ring-green-200 active:ring-2 active:ring-green-200"
+          className="bg-grey-200 hover:bg-grey-850 block size-[1.75rem] shrink-0 rounded-full shadow-sm hover:cursor-pointer hover:ring-2 hover:ring-green-200 active:ring-2 active:ring-green-200"
           onPointerUp={handlePointerUp}
         />
       ))}

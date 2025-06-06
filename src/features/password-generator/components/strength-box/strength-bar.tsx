@@ -8,14 +8,14 @@ import { StrengthType } from "../../types/password-generator";
 export const strengthVarVariants = cva("", {
   variants: {
     color: {
-      default: "bg-grey-800 outline-2 outline-offset-[-2px]",
+      default: "bg-grey-800 outline-2 outline-offset-[-0.125rem]",
       "too weak!": "bg-red-500",
       weak: "bg-orange-400 outline-none",
       medium: "bg-yellow-300 outline-none",
       strong: "bg-green-200",
     } satisfies Record<StrengthType, string>,
     defaultOption: {
-      outline: "outline-grey-200 block h-[28px] w-[10px]",
+      outline: "outline-grey-200 block h-[1.75rem] w-[0.625rem]",
     },
   },
   defaultVariants: {
@@ -32,7 +32,7 @@ const StrengthBar = ({
         <div
           key={i}
           className={cn(
-            "outline-grey-200 my-[3px] block h-[28px] w-[10px]",
+            "outline-grey-200 my-[0.1875rem] block h-[1.75rem] w-[0.625rem]",
             strengthVarVariants({ color: "default" }),
           )}
         >
@@ -40,7 +40,6 @@ const StrengthBar = ({
             // keyが変わるたびにレンダリング
             key={color}
             className={cn(
-              // "block h-[28px] w-[10px]",
               strengthVarVariants({ color }),
               color === "too weak!" &&
                 (i === 1 || i === 2 || i == 3) &&

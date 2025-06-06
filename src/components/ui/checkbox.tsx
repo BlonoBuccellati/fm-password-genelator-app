@@ -19,7 +19,7 @@ function Checkbox({
     <CheckboxPrimitive.Root
       data-slot="checkbox"
       className={cn(
-        "outline-grey-200 size-[20px] shrink-0 outline-2 outline-offset-[-2px] hover:cursor-pointer data-[state=checked]:bg-green-200 data-[state=checked]:outline-none",
+        "outline-grey-200 size-[1.25rem] shrink-0 outline-2 outline-offset-[-0.125rem] hover:cursor-pointer data-[state=checked]:bg-green-200 data-[state=checked]:outline-none",
         className,
       )}
       {...props}
