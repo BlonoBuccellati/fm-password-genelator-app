@@ -2,58 +2,16 @@
 
 import { PropsWithChildren } from "react";
 
-import { IconArrowRight, IconCopy } from "@/assets";
-import ButtonWithIcon from "@/components/button-with-icon";
-import CheckboxWithLabel from "@/components/checkbox-with-label";
+import { IconCopy } from "@/assets";
 import TextInputWithIcon from "@/features/password-generator/components/text-input-with-icon";
-import { cn } from "@/lib/utils";
 
-import {
-  PasswordGeneratorContext,
-  usePasswordGeneratorContext,
-} from "../context/password-generator-context";
+import { PasswordGeneratorContext } from "../context/password-generator-context";
 import { usePasswordGenerator } from "../hooks/use-password-generator";
 
 import { CharacterSlider } from "./character-slider";
-import StrengthBox from "./strength-box";
-
-const PasswordGenerateButton = () => {
-  const { handlerGenerateClick } = usePasswordGeneratorContext();
-  return (
-    <ButtonWithIcon
-      icon={IconArrowRight}
-      type="button"
-      className={cn()}
-      onClick={handlerGenerateClick}
-    >
-      generate
-    </ButtonWithIcon>
-  );
-};
-const CheckboxList = () => {
-  // これidが重要になるから型定義かなんかするかも。
-  const checkboxList = [
-    { label: "Include Uppercase Letters", id: "upper" },
-    { label: "Include Lowercase Letters", id: "lower" },
-    { label: "Include Numbers", id: "num" },
-    { label: "Include Symbols", id: "symbol" },
-  ];
-  const { handlerChecked } = usePasswordGeneratorContext();
-
-  return (
-    <div className="space-y-200">
-      {checkboxList.map((checkbox) => (
-        <CheckboxWithLabel
-          key={checkbox.id}
-          id={checkbox.id}
-          onCheckedChange={(state) => handlerChecked(state, checkbox.id)}
-        >
-          {checkbox.label}
-        </CheckboxWithLabel>
-      ))}
-    </div>
-  );
-};
+import { CheckboxList } from "./checkbox-list";
+import { PasswordGeneratorButton } from "./generate-button";
+import StrengthBox from "./strength-box/strength-box";
 
 const PasswordGeneratorForm = () => {
   const value = usePasswordGenerator();
@@ -78,7 +36,7 @@ const PasswordGeneratorForm = () => {
             <StrengthBox />
           </div>
           {/* form送信 */}
-          <PasswordGenerateButton />
+          <PasswordGeneratorButton />
         </div>
       </form>
     </PasswordGeneratorContext>

@@ -2,7 +2,7 @@ import { cva, VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
-import { StrengthType } from "../types/password-generator";
+import { StrengthType } from "../../types/password-generator";
 
 export const strengthVarVariants = cva("", {
   variants: {

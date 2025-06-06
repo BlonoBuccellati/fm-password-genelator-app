@@ -1,6 +1,6 @@
 import { Label } from "@/components/ui/label";
 
-import { usePasswordGeneratorContext } from "../context/password-generator-context";
+import { usePasswordGeneratorContext } from "../../context/password-generator-context";
 
 import StrengthBar from "./strength-bar";
 
