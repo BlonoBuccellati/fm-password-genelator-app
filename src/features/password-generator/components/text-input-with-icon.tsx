@@ -18,7 +18,7 @@ const TextFieldToast = ({ text, className }: TextFieldToastProps) => {
   return (
     <p
       className={cn(
-        "typo-4 bg-transparent/100 text-green-200 text-shadow-[0px_2px_2px_black]",
+        "typo-main bg-transparent/100 text-green-200 text-shadow-[0px_2px_2px_black]",
         className,
       )}
     >
@@ -49,11 +49,11 @@ const TextInputWithIcon = ({
       <Input
         value={resultPassword}
         type={props.type ?? "text"}
-        className={cn("w-full pr-600", className)}
+        className={cn("px-clamp-200-to-400 w-full pr-600", className)}
         {...props}
       />
       {/* ここはコンポーネント化可能 absoluteは外に出す。 */}
-      <div className="absolute top-1/2 right-200 flex -translate-y-1/2 items-center space-x-200">
+      <div className="right-clamp-200-to-400 absolute top-1/2 flex -translate-y-1/2 items-center space-x-200">
         <AnimatePresence>
           {showCopied && (
             <FadeInUp

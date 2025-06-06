@@ -10,8 +10,8 @@ export function CharacterSlider({ className, ...props }: SliderProps) {
   return (
     <div className={cn(className)}>
       <div className="flex items-center justify-between">
-        <p className="typo-4 text-grey-200">Character Length</p>
-        <span className="typo-2 block text-green-200">{length}</span>
+        <p className="typo-main text-grey-200">Character Length</p>
+        <span className="typo-1 block text-green-200">{length}</span>
       </div>
       <Slider
         onValueChange={handlerValueChange}

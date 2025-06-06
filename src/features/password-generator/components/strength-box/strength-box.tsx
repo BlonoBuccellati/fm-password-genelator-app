@@ -9,7 +9,7 @@ const StrengthIndicator = () => {
   const { resultStrengthColor, resultStrengthName } = result;
   return (
     <div className="flex items-center space-x-200 text-white">
-      <span className="uppercase">{resultStrengthName}</span>
+      <span className="typo-label uppercase">{resultStrengthName}</span>
       <StrengthBar color={resultStrengthColor} />
     </div>
   );
@@ -17,8 +17,8 @@ const StrengthIndicator = () => {
 
 const StrengthBox = () => {
   return (
-    <div className="bg-grey-850 flex items-center justify-between p-200">
-      <Label className="typo-4 text-grey-600 uppercase">strength</Label>
+    <div className="bg-grey-850 px-clamp-200-to-300 flex items-center justify-between py-200">
+      <Label className="typo-main text-grey-600 uppercase">strength</Label>
       <StrengthIndicator />
     </div>
   );

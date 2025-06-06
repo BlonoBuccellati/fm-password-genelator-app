@@ -22,7 +22,7 @@ const CheckboxWithLabel = ({
         onCheckedChange={onCheckedChange}
         hasAnimation={hasAnimation}
       />
-      <Label htmlFor={id} className="typo-4 text-white hover:cursor-pointer">
+      <Label htmlFor={id} className="main text-white hover:cursor-pointer">
         {children}
       </Label>
     </div>

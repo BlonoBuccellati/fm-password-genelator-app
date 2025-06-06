@@ -14,12 +14,12 @@ import { PasswordGeneratorButton } from "./generate-button";
 import StrengthBox from "./strength-box/strength-box";
 
 const PasswordGeneratorForm = () => {
+  // TODO:zustandに変更する。
   const value = usePasswordGenerator();
 
   return (
     <PasswordGeneratorContext value={value}>
-      <form className="space-y-200">
-        {/* TODO:state管理。character length,checkboxを見て決定 */}
+      <form className="space-y-clamp-200-to-300">
         <TextInputWithIcon
           toastText="Copied"
           icon={IconCopy}
@@ -29,11 +29,8 @@ const PasswordGeneratorForm = () => {
         />
         <div className="bg-grey-800 space-y-200 p-200">
           <div className="space-y-400">
-            {/* TODO:state管理。sliderの値はリフトアップする。 */}
             <CharacterSlider className="mx-auto w-full" />
-            {/* TODO:state管理。sliderの値はリフトアップする。 */}
             <CheckboxList />
-            {/* TODO:stateを渡す。character length,checkboxを見て決定 */}
             <StrengthBox />
           </div>
           {/* form送信 */}
@@ -45,12 +42,12 @@ const PasswordGeneratorForm = () => {
 };
 
 const PasswordGeneratorTitle = ({ children }: PropsWithChildren) => {
-  return <h1 className="text-grey-600 typo-4 text-center">{children}</h1>;
+  return <h1 className="text-grey-600 typo-title text-center">{children}</h1>;
 };
 
 const PasswordGenerator = () => {
   return (
-    <main className="mx-auto max-w-[343px] space-y-200">
+    <main className="space-y-clamp-200-to-400 py-clamp-200-to-300 mx-auto w-[clamp(21.438rem,9.689rem+50.13vw,33.75rem)]">
       <PasswordGeneratorTitle>Password Generator</PasswordGeneratorTitle>
       <PasswordGeneratorForm />
     </main>
