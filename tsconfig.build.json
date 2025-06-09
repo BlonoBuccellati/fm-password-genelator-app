@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  // 特定のファイル群を TypeScript のビルド対象から除外する
+  "exclude": [
+    "**/*.stories.tsx",
+    "**/*.stories.jsx",
+    "**/*.mdx",
+    "**/*.test.tsx",
+    "**/*.test.ts"
+  ]
+}

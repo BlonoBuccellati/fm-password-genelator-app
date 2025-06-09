@@ -1,15 +1,16 @@
 import { VariantProps } from "class-variance-authority";
 import { ComponentType, SVGProps } from "react";
 
+import { IconArrowRight } from "@/assets";
 import { cn } from "@/lib/utils";
 
 import { Button, buttonVariants } from "./ui/button";
 
 interface ButtonWithIconProps {
-  icon: ComponentType<SVGProps<SVGSVGElement>>;
+  icon?: ComponentType<SVGProps<SVGSVGElement>>;
 }
 const ButtonWithIcon = ({
-  icon: Icon,
+  icon: Icon = IconArrowRight,
   className,
   variant,
   children,
@@ -17,6 +18,7 @@ const ButtonWithIcon = ({
 }: ButtonWithIconProps &
   React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants>) => {
+  console.log(Icon);
   return (
     <Button
       {...props}
